@@ -50,6 +50,14 @@ Console.WriteLine("[Queries] Start");
 var customersWithAddresses = await dbContext.Set<Customer>()
     .ToListAsync();
 
+var customersWithAddressesSplitQuery = await dbContext.Set<Customer>()
+    .AsSplitQuery()
+    .ToListAsync();
+
+var customersWithAddressesSingleQuery = await dbContext.Set<Customer>()
+    .AsSingleQuery()
+    .ToListAsync();
+
 var customersWithoutAddresses = await dbContext.Set<Customer>()
     .IgnoreAutoIncludes()
     .ToListAsync();

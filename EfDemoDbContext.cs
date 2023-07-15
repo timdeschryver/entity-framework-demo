@@ -8,8 +8,10 @@ public class EfDemoDbContext : DbContext
 {
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseSqlServer(@"Server=.\;Database=EFDemo;Encrypt=False;MultipleActiveResultSets=true;Integrated Security=True;");
-
+        var connectionString = @"Server=.\;Database=EFDemo;Encrypt=False;MultipleActiveResultSets=true;Integrated Security=True;";
+        optionsBuilder.UseSqlServer(connectionString);
+        
+        // optionsBuilder.UseSqlServer(connectionString, o => o.UseQuerySplittingBehavior(QuerySplittingBehavior.SplitQuery));
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
